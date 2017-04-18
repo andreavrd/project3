@@ -1,0 +1,155 @@
+//////////////////////////////////////////////////
+// WATS1020 Dom Manipulation
+// Custom script goes here.
+//////////////////////////////////////////////////
+
+$( document ).ready(function() {
+    var userInfo = {
+        firstName: 'Jane',
+        lastName: 'Doe'
+    };
+    var voteCounts = {
+        great: 0,
+        greatest: 0,
+        total: 0
+    };
+    // Place all your Javascript code inside this "document ready" function so
+    // it does not run until the DOM is ready for Javascript manipulation.
+
+    // TODO: Create a function to listen for clicks on the "login" button.
+    //      1. When a user clicks the "login" button, hide the login
+    //          form elements on the page.
+    //      2. Fill the user's first and last name into `div.user-info`.
+    //      (NOTE: You do not have to perform any validation on the data as
+    //          a base requirement.)
+  $('.btn-sm').click(function(){
+    $('.navbar-form').hide();
+    $('.user-info').show();
+    $('.user-fullname').html(userInfo.firstName +" "+ userInfo.lastName);
+    console.log(userInfo);
+})
+
+// TODO: Create a function to listen for clicks on all the "View Details"
+// buttons so that when a user clicks a "View Details" button they see
+// the content contained in the elements with the class "details" in the
+// proper part of the screen.
+//      1. When user clicks a "view details" button, find the parent of that element.
+//      2. Within that parent, find all the elements that have the class `details`.
+//      3. Toggle visibility of all the elements within that parent with the class `details`.
+//      4. Change the text of the "view details" button to read "hide details" so the user
+//          understands they can hide the text again.
+contentToggleState = 0;
+var content = $(".view-details").html();
+
+$('.view-details:first').click(function (){
+  if (contentToggleState === 0) {
+    $('.details:first').show();
+     $(this).html('Show less');
+     contentToggleState = 1;
+     $(this).animate({
+         opacity: '0.5',
+         width: '170px'})
+  } else {
+    $('.details:first').hide();
+    contentToggleState = 0;
+    $(this).html("Learn more");
+    $(this).animate({
+        opacity: '1',
+        width: '150px'})
+  }
+});
+$('.awards').find('.view-details').click(function () {
+ if (contentToggleState === 0) {
+   $('.awards .details').show();
+    $(this).html('Hide details');
+    contentToggleState = 1;
+    $(this).animate({
+        opacity: '0.5',
+        width: '150px'})
+ } else {
+   $('.awards .details').hide();
+   contentToggleState = 0;
+   $(this).html('View details');
+   $(this).animate({
+       opacity: '1',
+       width: '111px'})
+ }
+
+
+// if ($('.awards .details').hide()){
+//   $('.awards .details').show();
+//   $('.awards').find('.view-details').text('Hide details')}
+// else {
+//     $('.awards .details').hide();
+//     $('.awards').find('.view-details').text('Show details')
+//   }
+});
+$('.quotes').find('.view-details').click(function (){
+  if (contentToggleState === 0) {
+    $('.quotes .details').show();
+     $(this).html('Hide details');
+     contentToggleState = 1;
+     $(this).animate({
+         opacity: '0.5',
+         width: '150px'})
+  } else {
+    $('.quotes .details').hide();
+    contentToggleState = 0;
+    $(this).html('View details');
+    $(this).animate({
+        opacity: '1',
+        width: '111px'})
+  }
+});
+$('.debugging').find('.view-details').click(function (){
+  if (contentToggleState === 0) {
+    $('.debugging .details').show();
+     $(this).html('Hide details');
+     contentToggleState = 1;
+     $(this).animate({
+         opacity: '0.5',
+         width: '150px'
+     });
+  } else {
+    $('.debugging .details').hide();
+    contentToggleState = 0;
+    $(this).html('View details');
+    $(this).animate({
+        opacity: '1',
+        width: '111px'})
+}
+});
+
+
+// function toggledisplay() {
+//     if ($('.awards .details').show()) {
+//         $('.awards .details').hide();
+//         $('.view-details').text('Hide details')
+//     } else {
+//       $('.awards .details').show();
+//     }
+// };
+
+// function toggledisplay() {
+//   if ($('.view-details').html ==="View details") {
+//       $('.view-details').html = "Hide details"
+//   } else {
+//   }}
+
+    $('.btn-primary:first-child').click(function (){
+        $(".great-progress").width($(".great-progress").width() + 72)
+    })
+    $('.btn-primary:nth-child(2)').click(function(){
+      $('.greatest-progress').width($('.greatest-progress').width() + 72)
+    })
+    // TODO: Create a function that listens for clicks on the voting buttons and
+    // looks at the `data-vote` attribute on each button to see what was voted for, z
+    // then determines the updated vote breakdown to adjust the progress bars.
+    //      1. Set up an event listener on the buttons with the `vote` class.
+    //      2. When a button is clicked, look at the `data-vote` attribute to determine
+    //          what the user is voting for ("great" or "greatest").
+    //      3. Increment the counter for whichever vote talley is affected.
+    //      4. Determine the respective percentages (out of 100) for each progress bar.
+    //      5. Modify the `width` attribute on each progress bar to set the updated percentage.
+
+});
